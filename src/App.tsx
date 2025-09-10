@@ -7,7 +7,7 @@ import { getTodos } from './api';
 import { actions as todosActions } from './features/todos';
 
 export const App = () => {
-  const user = useAppSelector(state => state.currentTodoSlice.assignedUser);
+  const todo = useAppSelector(state => state.currentTodoSlice.currentTodo);
   const loader = useAppSelector(state => state.todos.loader);
 
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ export const App = () => {
         </div>
       </div>
 
-      {user && <TodoModal />}
+      {todo && <TodoModal />}
     </>
   );
 };

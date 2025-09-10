@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions as currentTodoActions } from '../../features/currentTodo';
-import { getUser } from '../../api';
 import { Todo } from '../../types/Todo';
 
 type Props = {
@@ -16,19 +15,7 @@ export const TodoItem: React.FC<Props> = ({ todos }) => {
   const dispatch = useAppDispatch();
 
   const handleSetModal = (todo: Todo) => {
-    dispatch(currentTodoActions.setUserIsLoading(true));
-
-    getUser(todo.userId)
-      .then(user => {
-        dispatch(currentTodoActions.setAssignedUser(user));
-        dispatch(currentTodoActions.set(todo));
-      })
-      .finally(() =>
-        setTimeout(
-          () => dispatch(currentTodoActions.setUserIsLoading(false)),
-          300,
-        ),
-      );
+    dispatch(currentTodoActions.set(todo));
   };
 
   return (

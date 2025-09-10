@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React from 'react';
 import { TodoItem } from '../TodoItem';
 import { useAppSelector } from '../../app/hooks';
 
